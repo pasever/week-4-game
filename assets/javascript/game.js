@@ -13,8 +13,12 @@ $("#startingButton").on("click", function() {
 	var number2 = 0;
 	var number3 = 0;
 	var number4 = 0;
+	var seconds;
+	var int; //The interval to clear
 
 function generate() {
+	seconds = 25;
+
 	//generates random number
 	var randomNumber = Math.floor(Math.random()*101+19);
 	//display random number 
@@ -25,8 +29,17 @@ function generate() {
 	 number2 = Math.floor(Math.random()*11+1);
 	 number3 = Math.floor(Math.random()*11+1);
 	 number4 = Math.floor(Math.random()*11+1);
-
-
+	 var countdown = document.getElementById('countdown');
+	 
+	 int = setInterval(function () { //Starts the interval
+ 		seconds--;
+ 		countdown.innerHTML = seconds;
+ 		if (seconds === 0) {
+ 			clearInterval(int); //Stops the interval
+ 			setTimeout(lost, 25);
+ 		}
+	 }, 1000);
+ 
 	//updates the wins/losses/total box
 	$("#totalWins").text(totalWins);
 	$("#totalLosses").text(totalLosses);
@@ -42,14 +55,16 @@ function generate() {
 
 		var randomNumberElement = $("#randomNumber")
 		var randomNumber = randomNumberElement.text()
-
-		// if wins runs won()
-		 if (totalScore == randomNumber){
-			won();
-		//if losses runs lost() 
-		} else if (totalScore > randomNumber) {
-			lost();
-		}
+	clearTimeout(timer)
+		timer = setTimeout(function() {
+			// if wins runs won()
+			 if (totalScore == randomNumber){
+				won();
+			//if losses runs lost() 
+			} else if (totalScore > randomNumber) {
+				lost();
+			}			
+		}, 400)
 	})
 
 	$("#secondCrystal").on("click", function() {
@@ -58,14 +73,16 @@ function generate() {
 
 		var randomNumberElement = $("#randomNumber")
 		var randomNumber = randomNumberElement.text()
-
-		// if wins runs won()
-		 if (totalScore == randomNumber){
-			won();
-		//if losses runs lost() 
-		} else if (totalScore > randomNumber) {
-			lost();
-		}
+	clearTimeout(timer)
+		timer = setTimeout(function() {
+			// if wins runs won()
+			 if (totalScore == randomNumber){
+				won();
+			//if losses runs lost() 
+			} else if (totalScore > randomNumber) {
+				lost();
+			}			
+		}, 400)
 	})
 
 	$("#thirdCrystal").on("click", function() {
@@ -75,13 +92,16 @@ function generate() {
 		var randomNumberElement = $("#randomNumber")
 		var randomNumber = randomNumberElement.text()
 
-		// if wins runs won()
-		 if (totalScore == randomNumber){
-			won();
-		//if losses runs lost() 	
-		} else if (totalScore > randomNumber) {
-			lost();
-		}
+		clearTimeout(timer)
+		timer = setTimeout(function() {
+			// if wins runs won()
+			 if (totalScore == randomNumber){
+				won();
+			//if losses runs lost() 
+			} else if (totalScore > randomNumber) {
+				lost();
+			}			
+		}, 400)
 
 	})	
 
@@ -91,19 +111,23 @@ function generate() {
 
 		var randomNumberElement = $("#randomNumber")
 		var randomNumber = randomNumberElement.text()
+		clearTimeout(timer)
+		timer = setTimeout(function() {
+			// if wins runs won()
+			 if (totalScore == randomNumber){
+				won();
+			//if losses runs lost() 
+			} else if (totalScore > randomNumber) {
+				lost();
+			}			
+		}, 400)
 
-		// if wins runs won()
-		 if (totalScore == randomNumber){
-			won();
-		//if losses runs lost() 
-		} else if (totalScore > randomNumber) {
-			lost();
-		}
 	})
 
-
+var timer = null;
 function won() {
 
+	clearInterval(int); //Stops the timer
 	alert("Congratulations! You won!")
 	totalWins++;
 	$("#totalWins").text(totalWins);
@@ -111,6 +135,7 @@ function won() {
 }
 
 function lost() {
+	    clearInterval(int); //Stops the timer
 		alert("You lose!");
 		totalLosses++;
 		$("#totalLosses").text(totalLosses);
@@ -122,6 +147,9 @@ function reset() {
 	$("#startingButton").show();
 	totalScore = 0;
 	$("#finalScore").html(totalScore);
+    seconds = 25;
+	$("#countdown").html(seconds);
+
 
 }
 
