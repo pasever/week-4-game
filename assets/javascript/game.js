@@ -29,7 +29,7 @@ function generate() {
 
 }
 
-// on click on eacg crystal recalulates the total score 
+// on click on each crystal recalulates the total score 
 	$("#firstCrystal").on("click", function() {
 		totalScore += number1;
 		$("finalScore").text(totalScore);
