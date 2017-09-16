@@ -1,6 +1,6 @@
 $("#startingButton").on("click", function() {
 	
-	// $("#startingButton").remove();
+	$("#startingButton").remove();
 	generate();
 
 });
