@@ -40,20 +40,15 @@ function generate() {
 		console.log(totalScore);
 		$("#finalScore").text(totalScore);
 
-		console.log('totalScore: ', totalScore)
-		console.log('randomNumber: ', randomNumber)
 		var randomNumberElement = $("#randomNumber")
-		console.log('randomNumber element: ', randomNumberElement)
 		var randomNumber = randomNumberElement.text()
-		console.log('randomNumber: ', randomNumber)
+
 		// if wins runs won()
 		 if (totalScore == randomNumber){
 			won();
-			console.log('totalScore == randomNumber')
 		//if losses runs lost() 
 		} else if (totalScore > randomNumber) {
 			lost();
-			console.log('totalScore > randomNumber', 'totalScore', totalScore, 'randomNumber', randomNumber)
 		}
 	})
 
@@ -61,15 +56,15 @@ function generate() {
 		totalScore = totalScore + number2;
 		$("#finalScore").text(totalScore);
 
-		console.log('totalScore: ', totalScore)
-		console.log('randomNumber: ', randomNumber)
+		var randomNumberElement = $("#randomNumber")
+		var randomNumber = randomNumberElement.text()
 
+		// if wins runs won()
 		 if (totalScore == randomNumber){
 			won();
-			console.log('totalScore == randomNumber')
+		//if losses runs lost() 
 		} else if (totalScore > randomNumber) {
 			lost();
-			console.log('totalScore > randomNumber', 'totalScore', totalScore, 'randomNumber', randomNumber)
 		}
 	})
 
@@ -77,15 +72,15 @@ function generate() {
 		totalScore = totalScore + number3;
 		$("#finalScore").text(totalScore);
 
-		console.log('totalScore: ', totalScore)
-		console.log('randomNumber: ', randomNumber)
+		var randomNumberElement = $("#randomNumber")
+		var randomNumber = randomNumberElement.text()
 
+		// if wins runs won()
 		 if (totalScore == randomNumber){
 			won();
-			console.log('totalScore == randomNumber')
+		//if losses runs lost() 	
 		} else if (totalScore > randomNumber) {
 			lost();
-			console.log('totalScore > randomNumber', 'totalScore', totalScore, 'randomNumber', randomNumber)
 		}
 
 	})	
@@ -94,15 +89,15 @@ function generate() {
 		totalScore = totalScore + number4;
 		$("#finalScore").text(totalScore);
 
-		console.log('totalScore: ', totalScore)
-		console.log('randomNumber: ', randomNumber)
+		var randomNumberElement = $("#randomNumber")
+		var randomNumber = randomNumberElement.text()
 
+		// if wins runs won()
 		 if (totalScore == randomNumber){
 			won();
-			console.log('totalScore == randomNumber')
+		//if losses runs lost() 
 		} else if (totalScore > randomNumber) {
 			lost();
-			console.log('totalScore > randomNumber', 'totalScore', totalScore, 'randomNumber', randomNumber)
 		}
 	})
 
@@ -125,6 +120,9 @@ console.log('randomNumber', $("#randomNumber").text())
 
 function reset() {
 	//start button appears again 
-	$("#startingButton").show();	
+	$("#startingButton").show();
+	totalScore = 0;
+	$("#finalScore").html(totalScore);
+
 }
 
