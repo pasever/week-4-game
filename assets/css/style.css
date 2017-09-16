@@ -13,6 +13,11 @@ body {
 
 }
 
+#randomNumber, #finalScore {
+	font-size: 70px;
+	font-weight: bold;
+}
+
 #rules {
 	padding-top: 20px;
 	color: black;
@@ -21,8 +26,8 @@ body {
 	font-family: "Trebuchet MS", Verdana, sans-serif;
 }
 .crystalImage {
-	width: 150px; 
-	height: 150px;
+	width: 154px; 
+	height: 151px;
 	position: center;
 	position: relative;
     float: left;

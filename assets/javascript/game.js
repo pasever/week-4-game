@@ -31,7 +31,7 @@ function generate() {
 
 // on click on each crystal recalulates the total score 
 	$("#firstCrystal").on("click", function() {
-		totalScore += number1;
+		totalScore = totalScore + number1;
 		$("finalScore").text(totalScore);
 		// if wins runs won()
 		 if (totalScore == randomNumber){
@@ -43,7 +43,7 @@ function generate() {
 	})
 
 	$("#secondCrystal").on("click", function() {
-		totalScore += number2;
+		totalScore = totalScore + number2;
 		$("finalScore").text(totalScore);
 
 		 if (totalScore == randomNumber){
@@ -54,7 +54,7 @@ function generate() {
 	})
 
 	$("#thirdCrystal").on("click", function() {
-		totalScore += number3;
+		totalScore = totalScore + number3;
 		$("finalScore").text(totalScore);
 
 		 if (totalScore == randomNumber){
@@ -66,7 +66,7 @@ function generate() {
 	})	
 
 		$("#fourthCrystal").on("click", function() {
-		totalScore += number4;
+		totalScore = totalScore + number4;
 		$("finalScore").text(totalScore);
 
 		 if (totalScore == randomNumber){
