@@ -105,13 +105,12 @@ function generate() {
 function won() {
 
 	alert("Congratulations! You won!")
-	wins++;
-	$("#totalWins").text(wins);
+	totalWins++;
+	$("#totalWins").text(totalWins);
 	reset();
 }
 
 function lost() {
-console.log('randomNumber', $("#randomNumber").text())
 		alert("You lose!");
 		totalLosses++;
 		$("#totalLosses").text(totalLosses);

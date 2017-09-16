@@ -13,6 +13,21 @@ body {
 
 }
 
+.col-md-2 {
+	position: right;
+	margin-right: auto 0;
+
+}
+#rightAside {
+	float: right;
+}
+
+.totalScore {
+	position: right;
+	margin-right: auto 0;	
+
+}
+
 #randomNumber, #finalScore {
 	font-size: 70px;
 	font-weight: bold;
@@ -62,7 +77,9 @@ body {
 }
 
 .crystals {
-	margin-top:30px;
+	margin-top:4%;
+	margin-left: 11%;
+
 }
 
 .col-md-2 {
