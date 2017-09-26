@@ -1,8 +1,7 @@
-Boot Camp
 
-# week-4-game 
+# week-4-game Boot Camp
 
-to play the game go https://pasever.github.io/week-4-game/
+to play the game go to https://pasever.github.io/week-4-game/
 
 Instructions:
 
