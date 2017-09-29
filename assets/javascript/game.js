@@ -15,6 +15,7 @@ var number3 = 0;
 var number4 = 0;
 var seconds;
 var int; //The interval to clear
+var crystalBool = false;
 
 function generate() {
     seconds = 25;
@@ -149,7 +150,6 @@ function reset() {
     $("#finalScore").html(totalScore);
     seconds = 25;
     $("#countdown").html(seconds);
-
-
+    $("#randomNumber").html(0);
 }
 
