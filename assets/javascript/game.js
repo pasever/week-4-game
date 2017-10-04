@@ -1,9 +1,4 @@
-$("#startingButton").on("click", function () {
 
-    $("#startingButton").hide();
-    generate();
-
-});
 
 //variables to keep the score of wins and losses
 var totalScore = 0;
@@ -16,7 +11,14 @@ var number4 = 0;
 var seconds;
 var int; //The interval to clear
 var crystalBool = false;
+var gameStart = false;
 
+$("#startingButton").on("click", function () {
+gameStart = true;
+    $("#startingButton").hide();
+    generate();
+
+});
 function generate() {
     seconds = 25;
 
@@ -50,6 +52,7 @@ function generate() {
 
 // on click on each crystal recalulates the total score 
 $("#firstCrystal").on("click", function () {
+    if (gameStart){
     totalScore = totalScore + number1;
     console.log(totalScore);
     $("#finalScore").text(totalScore);
@@ -65,11 +68,13 @@ $("#firstCrystal").on("click", function () {
         } else if (totalScore > randomNumber) {
             lost();
         }
-    }, 400)
-})
+    }, 400);
+    }
+});
 
 $("#secondCrystal").on("click", function () {
     totalScore = totalScore + number2;
+    if (gameStart){
     $("#finalScore").text(totalScore);
 
     var randomNumberElement = $("#randomNumber")
@@ -83,11 +88,13 @@ $("#secondCrystal").on("click", function () {
         } else if (totalScore > randomNumber) {
             lost();
         }
-    }, 400)
-})
+    }, 400);
+    }
+});
 
 $("#thirdCrystal").on("click", function () {
     totalScore = totalScore + number3;
+    if (gameStart){
     $("#finalScore").text(totalScore);
 
     var randomNumberElement = $("#randomNumber")
@@ -103,11 +110,12 @@ $("#thirdCrystal").on("click", function () {
             lost();
         }
     }, 400)
-
+    }
 })
 
 $("#fourthCrystal").on("click", function () {
     totalScore = totalScore + number4;
+    if (gameStart){
     $("#finalScore").text(totalScore);
 
     var randomNumberElement = $("#randomNumber")
@@ -122,7 +130,7 @@ $("#fourthCrystal").on("click", function () {
             lost();
         }
     }, 400)
-
+    }
 })
 
 var timer = null;
