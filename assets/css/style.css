@@ -1,33 +1,37 @@
+html {
+    height: 100%;
+}
+
 body {
-    margin: 0px;
+    margin: 0;
     line-height: 24px;
     /*background: url("../images/blue-background-gradient-texture.jpg");*/
     background: #1496BB;
+    height: 100%;
 }
+
+#nav {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 60px);
+}
+
+.top {
+    margin: 25px auto;
+}
+
 
 #gameName {
     text-align: center;
     font-size: 60px;
     font-weight: bold;
     font-family: "Trebuchet MS", Verdana, sans-serif;
-
-}
-
-
-
-.col-md-2 {
-    position: right;
-    margin-right: auto 0;
-
-}
-#rightAside {
-    float: right;
-}
-
-.totalScore {
-    position: right;
-    margin-right: auto 0;	
-
 }
 
 #randomNumber, #finalScore {
@@ -42,11 +46,9 @@ body {
     line-height: 1.52947;
     font-family: "Trebuchet MS", Verdana, sans-serif;
 }
+
 .crystalImage {
-    width: 154px; 
-    height: 151px;
-    position: center;
-    position: relative;
+    height: 140px;
     float: left;
 }
 
@@ -55,13 +57,18 @@ body {
 }
 
 .col-md-8 {
+    display: flex;
+    justify-content: center;
+}
 
-    margin-top: -16px;
+.col-md-8 img {
+    cursor: pointer;
 }
 
 #gameExtras {
     padding-top: 30px;
 }
+
 .col-md-3 {
     padding-top: 100px;
     text-align: right;
@@ -74,22 +81,27 @@ body {
 }
 
 .totalWins {
-
-    font-weight: : bold;
+    font-weight: bold;
 }
 
-.crystals {
-    margin-top:4%;
-    margin-left: 11%;
-
+.action {
+    display: flex;
+    align-items: center;
 }
 
 .col-md-2 {
     background: #107896;
-    width: 160px;
+    width: 170px;
     height: 170px;
-    text-align:center;
 }
+
+.col-md-2 h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px
+}
+
 footer {
     margin-top: 2%;
 }
