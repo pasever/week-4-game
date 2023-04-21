@@ -2,7 +2,6 @@
 <html lang="en-us">
 
     <head>
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- jQuery CDN -->
@@ -17,7 +16,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <!-- Final stle sheet-->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
     </head>
 
     <body>
@@ -34,86 +32,65 @@
                     </button>
                     <a class="navbar-brand" href="">Evgheni Pascalov</a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="index.html">About</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-
-                </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
         </nav>
 
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-md-9">
-                    <h1 id="gameName">Crystal Collector</h1>
-                    <div id="rules"><!--text div starts-->
-                        <p>You will be given a random number at the start of the game.</p>
-                        <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
-                        <p>You win the game by matching your total score to random number, you lose the game if you total score goes above the random number.</p>
-                        <p>The value of each crystal is hidden from you until click on it.</p>
-                        <p>Each time when the game starts, the game will change the values of each crystal.</p>
-                    </div><!--text div ends-->
-                </div>
-
-                <div class="col-md-3">
-                    <h2>Wins: <span id="totalWins">0</span></h2>
-                    <h2>Losses: <span id="totalLosses">0</span></h2>
-                    <h2>Timer: <span id="countdown">25</span></h2>
-                    <button type="button" class="btn btn-info btn-lg" id="startingButton">Start</button>
-                </div>
-
-            </div><!-- row ends -->
-
-            <div class="push"></div>
-
-        </div><!-- container ends -->
-
-
-        <div class="container" id="gameExtras">
-
-            <div class="row">
-
-                <div class="col-md-2">
-                    <h2>Goal:</br><span id="randomNumber">0</span></h2>
-                </div>
-
-                <div class="col-md-8">
-                    <div class="crystals">
-                        <img class='crystalImage' src="assets/images/5-Star_Crystal.png" alt="red_crystal" id="firstCrystal">
+        <div class="main">
+            <div class="container">
+                <div class="row top">
+                    <div class="col-md-9">
+                        <h1 id="gameName">Crystal Collector</h1>
+                        <div id="rules"><!--text div starts-->
+                            <p>You will be given a random number at the start of the game.</p>
+                            <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+                            <p>You win the game by matching your total score to random number, you lose the game if you total score goes above the random number.</p>
+                            <p>The value of each crystal is hidden from you until click on it.</p>
+                            <p>Each time when the game starts, the game will change the values of each crystal.</p>
+                        </div><!--text div ends-->
                     </div>
-                    <div class="crystals">
-                        <img class='crystalImage' src="assets/images/Crystal_multi_mutant.png" alt="if_github-square-social-media_764894" id="secondCrystal">
+
+                    <div class="col-md-3">
+                        <h2>Wins: <span id="totalWins"></span></h2>
+                        <h2>Losses: <span id="totalLosses"></span></h2>
+                        <h2>Timer: <span id="countdown"></span></h2>
+                        <button
+                            type="button"
+                            class="btn btn-info btn-lg"
+                            id="startingButton">Start
+                        </button>
                     </div>
-                    <div class="crystals">
-                        <img class='crystalImage' src="assets/images/Crystal_generic4.png" alt="blue_crystal" id="thirdCrystal">
-                    </div> 
-                    <div class="crystals">
-                        <img class='crystalImage' src="assets/images/Crystal_weekly_event.png" alt="if_github-square-social-media_764894" id="fourthCrystal" >
+                </div><!-- row ends -->
+            </div><!-- container 1 ends -->
+
+            <div>
+                <div class="container" id="gameExtras">
+                    <div class="row action">
+                        <div class="col-md-2">
+                            <h2>
+                                Goal:<span id="randomNumber">0</span>
+                            </h2>
+                        </div>
+
+                        <div class="col-md-8">
+                            <img class='crystalImage' src="assets/images/5-Star_Crystal.png" alt="red_crystal" id="firstCrystal">
+                            <img class='crystalImage' src="assets/images/Crystal_multi_mutant.png" alt="if_github-square-social-media_764894" id="secondCrystal">
+                            <img class='crystalImage' src="assets/images/Crystal_generic4.png" alt="blue_crystal" id="thirdCrystal">
+                            <img class='crystalImage' src="assets/images/Crystal_weekly_event.png" alt="if_github-square-social-media_764894" id="fourthCrystal">
+                        </div>
+
+                        <div class="col-md-2">
+                            <h2>
+                                Player:<span id="finalScore">0</span>
+                            </h2>
+                        </div>
                     </div>
-                </div>
+                </div><!-- container 2 ends -->
 
-                <div class="col-md-2" id="rightAside">
-
-                    <h2>Player:</br><span id="finalScore">0</span></h2>
-
-                </div>
-
+                <footer class="footer">
+                    <p class="text-center">&copy; Copyright 2017 Evgheni Pascalov</p>
+                </footer>
             </div>
-            <div class="push"></div>
         </div>
-
-        <footer class="footer">
-
-            <p class="text-center">&copy; Copyright 2017 Evgheni Pascalov</p>
-
-        </footer>
 
         <script src="assets/javascript/game.js"></script>
         <!-- Bootstrap JavaScript CDN -->

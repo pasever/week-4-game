@@ -1,163 +1,123 @@
+let totalWins = localStorage.getItem("totalWins") || 0;
+let totalLosses = localStorage.getItem("totalLosses") || 0;
+let number1 = 0;
+let number2 = 0;
+let number3 = 0;
+let number4 = 0;
+let seconds;
+let int;
+let gameStart = false;
+
+let currentRandomNumber = 0;
+let currentGuessesNumber = 0;
+
+let randomNumberRef = document.getElementById('randomNumber');
+let countdownRef = document.getElementById('countdown');
+let totalWinsRef = document.getElementById('totalWins');
+let totalLossesRef = document.getElementById('totalLosses');
+let finalScoreRef = document.getElementById('finalScore');
 
 
-//variables to keep the score of wins and losses
-var totalScore = 0;
-var totalWins = 0;
-var totalLosses = 0;
-var number1 = 0;
-var number2 = 0;
-var number3 = 0;
-var number4 = 0;
-var seconds;
-var int; //The interval to clear
-var crystalBool = false;
-var gameStart = false;
-
-$("#startingButton").on("click", function () {
-    gameStart = true;
-    $("#startingButton").hide();
-    generate();
-
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Hello World!");
+    totalWinsRef.innerText = totalWins.toString()
+    totalLossesRef.innerText = totalLosses.toString();
+    countdownRef.innerText = '25';
 });
+
+document.getElementById('startingButton').addEventListener('click', () => {
+    gameStart = true;
+    document.getElementById('startingButton').style.display = 'none';
+    generate();
+})
+
 function generate() {
     seconds = 25;
+    currentRandomNumber = Math.floor(Math.random() * 101 + 29);
+    randomNumberRef.innerText = currentRandomNumber.toString();
 
-    //generates random number
-    var randomNumber = Math.floor(Math.random() * 101 + 19);
-    //display random number 
-    $("#randomNumber").text(randomNumber);
-
-    //generate 4 numbers from 1 to 12 for each crystal
+    // generate 4 numbers from 1 to 12 for each crystal
     number1 = Math.floor(Math.random() * 11 + 1);
     number2 = Math.floor(Math.random() * 11 + 1);
     number3 = Math.floor(Math.random() * 11 + 1);
     number4 = Math.floor(Math.random() * 11 + 1);
-    var countdown = document.getElementById('countdown');
 
-    int = setInterval(function () { //Starts the interval
+    int = setInterval(function () {
         seconds--;
-        countdown.innerHTML = seconds;
-        if (seconds === 0) {
-            clearInterval(int); //Stops the interval
-            setTimeout(lost, 25);
+        countdownRef.innerHTML = seconds;
+        if (seconds === -1) {
+            clearInterval(int); // Stops the interval
+            lost();
         }
     }, 1000);
 
-    //updates the wins/losses/total box
-    $("#totalWins").text(totalWins);
-    $("#totalLosses").text(totalLosses);
-    // $("#totalScore").text(totalScore);
-
+    totalWinsRef.innerText = totalWins.toString();
+    totalLossesRef.innerText = totalLosses.toString();
 }
 
-// on click on each crystal recalulates the total score 
-$("#firstCrystal").on("click", function () {
-    if (gameStart) {
-        totalScore = totalScore + number1;
-        console.log(totalScore);
-        $("#finalScore").text(totalScore);
+let timer;
+document.getElementById('firstCrystal').addEventListener('click', () => {
+    if (!gameStart) return;
+    currentGuessesNumber += number1;
+    setTimeout(() => isGameOver(), 0)
+})
 
-        var randomNumberElement = $("#randomNumber");
-        var randomNumber = randomNumberElement.text();
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-            // if wins runs won()
-            if (totalScore === randomNumber) {
-                won();
-                //if losses runs lost() 
-            } else if (totalScore > randomNumber) {
-                lost();
-            }
-        }, 400);
-    }
-});
+document.getElementById('secondCrystal').addEventListener('click', () => {
+    if (!gameStart) return;
+    currentGuessesNumber += number2;
+    isGameOver()
+})
 
-$("#secondCrystal").on("click", function () {
-    totalScore = totalScore + number2;
-    if (gameStart) {
-        $("#finalScore").text(totalScore);
+document.getElementById('thirdCrystal').addEventListener('click', () => {
+    if (!gameStart) return;
+    currentGuessesNumber += number3;
+    isGameOver()
+})
 
-        var randomNumberElement = $("#randomNumber");
-        var randomNumber = randomNumberElement.text();
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-            // if wins runs won()
-            if (totalScore === randomNumber) {
-                won();
-                //if losses runs lost() 
-            } else if (totalScore > randomNumber) {
-                lost();
-            }
-        }, 400);
-    }
-});
+document.getElementById('fourthCrystal').addEventListener('click', () => {
+    if (!gameStart) return;
+    currentGuessesNumber += number4;
+    isGameOver()
+})
 
-$("#thirdCrystal").on("click", function () {
-    totalScore = totalScore + number3;
-    if (gameStart) {
-        $("#finalScore").text(totalScore);
+function isGameOver() {
+    document.getElementById('finalScore').innerText = currentGuessesNumber;
+    setTimeout(() => {
+        if (currentRandomNumber < currentGuessesNumber) {
+            lost()
+        } else if (currentRandomNumber === currentGuessesNumber) {
+            won();
+        }
+    }, 0)
+}
 
-        var randomNumberElement = $("#randomNumber");
-        var randomNumber = randomNumberElement.text();
-
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-            // if wins runs won()
-            if (totalScore === randomNumber) {
-                won();
-                //if losses runs lost() 
-            } else if (totalScore > randomNumber) {
-                lost();
-            }
-        }, 400);
-    }
-});
-
-$("#fourthCrystal").on("click", function () {
-    totalScore = totalScore + number4;
-    if (gameStart) {
-        $("#finalScore").text(totalScore);
-
-        var randomNumberElement = $("#randomNumber");
-        var randomNumber = randomNumberElement.text();
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-            // if wins runs won()
-            if (totalScore === randomNumber) {
-                won();
-                //if losses runs lost() 
-            } else if (totalScore > randomNumber) {
-                lost();
-            }
-        }, 400);
-    }
-});
-
-var timer = null;
+timer = null;
 function won() {
-
     clearInterval(int); //Stops the timer
-    alert("Congratulations! You won!");
+    alert("Урааа! Ты молодец!");
     totalWins++;
-    $("#totalWins").text(totalWins);
+    localStorage.setItem("totalWins", totalWins);
+    totalWinsRef.innerText = totalWins.toString()
     reset();
 }
 
 function lost() {
-    clearInterval(int); //Stops the timer
-    alert("You lose!");
+    clearInterval(int);
+    alert("Ну Натааааааааааш!!");
     totalLosses++;
-    $("#totalLosses").text(totalLosses);
+    localStorage.setItem("totalLosses", totalLosses);
+    totalLossesRef.innerText = totalLosses.toString();
     reset();
 }
 
 function reset() {
-    //start button appears again 
-    $("#startingButton").show();
-    totalScore = 0;
-    $("#finalScore").html(totalScore);
+    currentGuessesNumber = 0;
+    currentRandomNumber = 0;
     seconds = 25;
-    $("#countdown").html(seconds);
-    $("#randomNumber").html(0);
+
+    document.getElementById('startingButton').style.display = 'block';
+    finalScoreRef.innerText = currentGuessesNumber;
+    countdownRef.innerText = seconds;
+    randomNumberRef.innerText = currentRandomNumber;
 }
 
